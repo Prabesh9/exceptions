@@ -7,7 +7,6 @@
  */
 
 plugins {
-    // Apply the java-library plugin for API and implementation separation.
     id 'org.springframework.boot' version '2.2.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java-library'
@@ -19,10 +18,9 @@ signing {
     sign configurations.archives
 }
 
-//create a single Jar with all dependencies
 task javadocJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',  
+        attributes 'Implementation-Title': 'Exceptions Library',  
         	'Implementation-Version': '0.0.1',
         	'Main-Class': 'com.esamparka.exceptions.Library'
     }
@@ -36,19 +34,9 @@ artifacts {
 }
 
 repositories {
-    // Use JCenter for resolving dependencies.
-    jcenter()
     mavenCentral()
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // Use JUnit test framework.
-    testImplementation 'junit:junit:4.13'
-
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:29.0-jre'
 }
