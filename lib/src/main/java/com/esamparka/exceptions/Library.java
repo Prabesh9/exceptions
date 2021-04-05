@@ -5,6 +5,7 @@ package com.esamparka.exceptions;
 
 public class Library {
     public boolean someLibraryMethod() {
+        String a = "abc";
         return true;
     }
 }

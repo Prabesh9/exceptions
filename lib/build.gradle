@@ -8,6 +8,8 @@
 
 plugins {
     // Apply the java-library plugin for API and implementation separation.
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java-library'
 	id 'maven'
 	id 'signing'
@@ -17,12 +19,30 @@ signing {
     sign configurations.archives
 }
 
+//create a single Jar with all dependencies
+task javadocJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',  
+        	'Implementation-Version': '0.0.1',
+        	'Main-Class': 'com.esamparka.exceptions.Library'
+    }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+artifacts {
+    archives javadocJar
+}
+
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
 
