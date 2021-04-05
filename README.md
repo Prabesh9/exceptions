@@ -2,3 +2,5 @@
 (https://jitpack.io/#com.github.Prabesh9/exceptions)
 
 # exceptions
+
+Custom exceptions for spring boot project
