@@ -21,8 +21,7 @@ signing {
 task javadocJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Exceptions Library',  
-        	'Implementation-Version': '0.0.1',
-        	'Main-Class': 'com.esamparka.exceptions.Library'
+        	'Implementation-Version': '0.0.1'
     }
     baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
